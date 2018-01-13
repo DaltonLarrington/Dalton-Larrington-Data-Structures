@@ -1,3 +1,7 @@
+# Prime numbers
+# Programmer: Dalton Larrington
+# DatE: 1-13-18
+
 for i in range(2, 50):
     isPrime = True
     for j in range (2, i):
