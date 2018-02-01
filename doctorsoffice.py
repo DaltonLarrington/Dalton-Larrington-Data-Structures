@@ -12,6 +12,17 @@ class DoctorsOffice:
         self.numberofPatients = numberofPatients
         self.examRooms = examRooms
 
+     def patient(
+         
+
+    def nurse(patientLocation, takePatient):
+
+
+    def examroom(
+
+    
+        
+
 
     
 
