@@ -3,26 +3,49 @@
 #Date: 1-31-18
 
 import time
-import random 
+import random
 
-class DoctorsOffice:
+names = ["joey", "bobby", "sueann", "loretta", "grant", "jenny", "billy",\
+         "cletus", "tucker", "hunter", "bubba", "gunner", "rose", "amy",\
+         "charlette", "duke", "ricky", "bo", "luke", "jessie"]
 
-    def __init__(self, numberofPatients, examRooms):
+waitingRoom = []
 
-        self.numberofPatients = numberofPatients
-        self.examRooms = examRooms
+triageRoom = []
 
-     def patient(
-         
+examRoom = []
 
-    def nurse(patientLocation, takePatient):
+examRoomSize = 6
 
+doctors = 6
 
-    def examroom(
+"""move patient from waiting room to triage room"""
+def callNurse():
 
+    triageRoom.append(waitingRoom.pop(0))
     
-        
+    sort(triageRoom, key = patient.triageNumber)
+    
 
+class patient:
+
+    def __init__(self):
+        
+        self.triagenumber = random.rantInt(100)
+        
+        self.name = names[random.randInt(len(names)-1)]\
+        + " " + names[random.randInt(len(names)-1)]
+        
+        self.arrivalTime = time
+        
+        self.treatmentTime random.rangerange(15, 20)
+
+    def exit(self):
+        #remove patient from simulation
+        pass
+
+
+        
 
     
 
