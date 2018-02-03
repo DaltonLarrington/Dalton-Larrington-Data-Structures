@@ -3,11 +3,12 @@
 #Date: 1-31-18
 
 import time
+
 import random
 
 names = ["joey", "bobby", "sueann", "loretta", "grant", "jenny", "billy",\
          "cletus", "tucker", "hunter", "bubba", "gunner", "rose", "amy",\
-         "charlette", "duke", "ricky", "bo", "luke", "jessie"]
+         "charlette", "duke", "ricky", "bo", "luke", "jessie", "tex"]
 
 waitingRoom = []
 
@@ -22,10 +23,15 @@ doctors = 6
 def main():
 
     #Add multiple patients
+
+    for len(names):
+
+        
     
     #Time limits
 
     currentTime = 0
+    
     p = Patient()
 
     waitingRoom.append(p)
@@ -33,27 +39,26 @@ def main():
     while True:
         
         print (waitingRoom)
-        print(triageRoom)
-        print(examRoom)
 
+        print(triageRoom)
+
+        print(examRoom)
+        
         currentTime = currentTime + 1
 
-        if waitingRoom[1]:
+        if waitingRoom[0]:
 
-            x.callNurse()
+            callNurse()
 
-            examRoom[0].treatmentTime = examRoom[0].treatmentTime - 1
+        if triageRoom[0]:
+
+            examRoom.append(triageRoom.pop(0))
 
         if examRoom[0].treatmentTime == 0:
-            
-            print(examRoom[0].treatmentTime)
-
+        
             examRoom.pop(0)
 
-        time.sleep(1)
-
-
-        
+        time.sleep(1)        
 
 """move patient from waiting room to triage room"""
 def callNurse():
