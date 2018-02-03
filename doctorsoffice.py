@@ -19,30 +19,70 @@ examRoomSize = 6
 
 doctors = 6
 
+def main():
+
+    #Add multiple patients
+    
+    #Time limits
+
+    currentTime = 0
+    p = Patient()
+
+    waitingRoom.append(p)
+
+    while True:
+        
+        print (waitingRoom)
+        print(triageRoom)
+        print(examRoom)
+
+        currentTime = currentTime + 1
+
+        if waitingRoom[1]:
+
+            x.callNurse()
+
+            examRoom[0].treatmentTime = examRoom[0].treatmentTime - 1
+
+        if examRoom[0].treatmentTime == 0:
+            
+            print(examRoom[0].treatmentTime)
+
+            examRoom.pop(0)
+
+        time.sleep(1)
+
+
+        
+
 """move patient from waiting room to triage room"""
 def callNurse():
 
     triageRoom.append(waitingRoom.pop(0))
     
-    sort(triageRoom, key = patient.triageNumber)
+    sorted(triageRoom, key = lambda patient: patient.triageNumber)
+
+def doctor():
+
+    examRoom.append(triageRoom.pop())
+
+    #doctors = doctors - 1
     
 
-class patient:
+class Patient:
 
     def __init__(self):
         
-        self.triagenumber = random.rantInt(100)
+        self.triageNumber = random.randint(0, 100)
         
-        self.name = names[random.randInt(len(names)-1)]\
-        + " " + names[random.randInt(len(names)-1)]
+        self.name = names[random.randint(0, len(names)-1)]\
+        + " " + names[random.randint(0, len(names)-1)]
         
-        self.arrivalTime = time
+        self.arrivalTime = 0
         
-        self.treatmentTime random.rangerange(15, 20)
+        self.treatmentTime = random.randrange(15, 20)
 
-    def exit(self):
-        #remove patient from simulation
-        pass
+main()
 
 
         
