@@ -11,6 +11,9 @@
 # The simulation does run through, but it does not move the patient from waitingRoom to triageRoom effectivley.
 # It rather moves the patient from waitingRoom, sends the patient to examRoom, counts down the treatmentTime,
 # and then pops the patient out of the stack and ends the simulation.
+# I believe with the help I recieved that I have seen how abstract
+# I need to be in order to code effectivley.
+
 
 import time
 
