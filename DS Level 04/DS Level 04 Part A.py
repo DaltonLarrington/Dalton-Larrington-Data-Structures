@@ -4,10 +4,12 @@
 
 def main(number):
 
+    counter = 0
+
     #If the number is even
     if number % 2 == 0:
 
-        final = number // 2 #Adding 1 to this sequence makes the program run forever???
+        final = number // 2  #Adding 1 to this sequence makes the program run forever???
 
     else:
         
@@ -25,7 +27,8 @@ print("The sequence is: \n" + str(userInput))
 #Print the sequence
 newSequence = main(userInput)
 print(newSequence)
-while  newSequence != 1:
+
+while newSequence != 1:
     newSequence = main(newSequence)
     print(newSequence)
 
