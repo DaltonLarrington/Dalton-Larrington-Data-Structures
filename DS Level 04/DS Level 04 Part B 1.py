@@ -4,7 +4,7 @@
 
 import time
 
-startTime = time.time()
+Start_Time = time.time()
 
 def fib(n):
     
@@ -21,8 +21,8 @@ print("Fibonacci Sequence: ")
 for i in range(input):
     print(i)
 
-print("Runtime: ")
-print(time.time() - startTime)
+
+print("Runtime:", time.time() - Start_Time)
 
 
 

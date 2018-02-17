@@ -23,6 +23,6 @@ def fib(n):
 for i in range(0, 10):
     print(fib(i))
 
-print("Runtime: ")
-print(time.time() - startTime)
+
+print("Runtime:", time.time() - startTime)
     
