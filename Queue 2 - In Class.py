@@ -40,20 +40,15 @@ class MyList:
         for i in range(self.length - 1):
             ci = ci.next
             output += ", " + str(ci.value)
-        return output
+        return output  
 
-        
-        return "Hello, world!"
 
 newList = MyList()
 newList.add(5)
 newList.add(7)
-newList.add(8)
-newList.add(9)
-newList.add('Hello, world!')
-print(newList.head.value)
-print(newList.head.next.value)
-print(newList.tail.value)
-
+newList.add(True)
+newList.add("Alpha")
+newList.add(-1)
+newList.add("hello")
 print(newList)
 
