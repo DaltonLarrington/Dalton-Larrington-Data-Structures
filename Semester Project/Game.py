@@ -1,5 +1,6 @@
 import pygame
 import random
+from os import path
 
 pygame.init()
 
@@ -7,6 +8,9 @@ WIDTH = 1280
 HEIGHT = 760
 vel = 8
 FPS = 60
+
+#Custom Sprite
+snd_dir = path.join(path.dirname(__file__), 'images')
 
 #define colors
 WHITE = (255, 255, 255)
@@ -16,6 +20,7 @@ BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 
 #initialize pygame and create window
+bg = pygame.image.load('background.png')
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -24,26 +29,27 @@ clock = pygame.time.Clock()
 pygame.mixer.music.load('gamesound.wav')
 pygame.mixer.music.play(loops=0, start=0.0)
 
-#background
-image = pygame.image.load("background.jpg").convert()
-x = 0
-
-while True:     
-
-        rel_x = x % image.get_rect().width
-        screen.blit(image, (rel_x - image.get_rect().width, 0))
-        if rel_x < WIDTH:
-            screen.blit(image, (rel_x, 0))
-        x -= 1
-
-        pygame.display.update()
-        clock.tick(FPS)
+###background
+##image = pygame.image.load("background.jpg").convert()
+##x = 0
+##
+##while True:     
+##
+##        rel_x = x % image.get_rect().width
+##        screen.blit(image, (rel_x - image.get_rect().width, 0))
+##        if rel_x < WIDTH:
+##            screen.blit(image, (rel_x, 0))
+##        x -= 1
+##
+##        pygame.display.update()
+##        clock.tick(FPS)
 
 class Player(pygame.sprite.Sprite):
     
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((20, 50))
+        self.image = pygame.image.load('spaceship.png')
         self.image.fill(BLUE)
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH / 2
@@ -145,7 +151,7 @@ while running:
     # check to see if a mob hit the player
     hits = pygame.sprite.spritecollide(player, mobs, False)
     if hits:
-        running = True
+        running = False
         print("You Lose!")
 
     #Draw
