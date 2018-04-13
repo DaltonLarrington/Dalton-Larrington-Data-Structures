@@ -6,11 +6,12 @@ pygame.init()
 
 WIDTH = 1280
 HEIGHT = 760
-vel = 8
 FPS = 60
 
+x_change = 0
+
 #Custom Sprite
-snd_dir = path.join(path.dirname(__file__), 'images')
+##snd_dir = path.join(path.dirname(__file__), 'images')
 
 #define colors
 WHITE = (255, 255, 255)
@@ -20,12 +21,13 @@ BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 
 #initialize pygame and create window
-bg = pygame.image.load('background.png')
+
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Asteroids!")
 clock = pygame.time.Clock()
+##bg = pygame.image.load('./images/background.png')
 pygame.mixer.music.load('gamesound.wav')
 pygame.mixer.music.play(loops=0, start=0.0)
 
@@ -46,31 +48,33 @@ pygame.mixer.music.play(loops=0, start=0.0)
 
 class Player(pygame.sprite.Sprite):
     
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((20, 50))
-        self.image = pygame.image.load('spaceship.png')
-        self.image.fill(BLUE)
-        self.rect = self.image.get_rect()
-        self.rect.centerx = WIDTH / 2
-        self.rect.bottom = HEIGHT - 300
-        self.speedx = 0
+    def __init__(x,y):
+        gameDisplay.blit(
+##        pygame.sprite.Sprite.__init__(self)
+##        self.image = pygame.Surface((20, 50))
+##        self.image = pygame.image.load('./images/spaceship.png')
+##        self.image.fill(BLUE)
+##        self.rect = self.image.get_rect()
+##        self.rect.centerx = WIDTH / 2
+##        self.rect.bottom = HEIGHT - 300
+##        self.speedx = 0
+        x = (display_width * 0.45)
+        y = (display_height * 0.8)
         
 
-    def update(self):
-        self.speedx = 0        
-        keystate = pygame.key.get_pressed()
-        if keystate[pygame.K_LEFT]:
-            self.speedx = -15
-       # if keystate[pygame.K_UP]:#Working on up and down keys
-           
-        if keystate[pygame.K_RIGHT]:
-            self.speedx = 15
-        self.rect.x += self.speedx
-        if self.rect.right > WIDTH:
-            self.rect.right = WIDTH
-        if self.rect.left < 0:
-            self.rect.left = 0
+    def update(self):  
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    x_change = -5
+
+            elif event.key == pygame.K_RIGHT:
+                x_chnage = 5
+
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                    x_change = 0
+
+    x += x_change
     
     def shoot(self):       
         bullet = Bullet(self.rect.centerx, self.rect.top)      
@@ -151,12 +155,13 @@ while running:
     # check to see if a mob hit the player
     hits = pygame.sprite.spritecollide(player, mobs, False)
     if hits:
-        running = False
+        running = True
         print("You Lose!")
 
     #Draw
     screen.fill(WHITE)
     all_sprites.draw(screen)
+##    screen.blit(bg,(0,0))
     #After drawing everything, flip the display
     pygame.display.flip()
 
