@@ -28,6 +28,8 @@ background = pygame.image.load('background.png')
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Asteroids!")
 clock = pygame.time.Clock()
+
+#Music
 pygame.mixer.music.load('gamesound.wav')
 pygame.mixer.music.play(loops=0, start=0.0)
 
@@ -37,8 +39,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image = img
-        self.rect = self.image.get_rect()
-        
+        self.rect = self.image.get_rect()        
 ##        pygame.sprite.Sprite.__init__(self)
 ##        self.image = pygame.Surface((20, 50))
 ##        self.image.fill(BLUE)
@@ -53,15 +54,36 @@ class Player(pygame.sprite.Sprite):
         keystate = pygame.key.get_pressed()
         if keystate[pygame.K_LEFT]:
             self.speedx = -15
-       # if keystate[pygame.K_UP]:#Working on up and down keys
-           
+       # if keystate[pygame.K_UP]:#Working on up and down keys           
         if keystate[pygame.K_RIGHT]:
             self.speedx = 15
         self.rect.x += self.speedx
         if self.rect.right > WIDTH:
             self.rect.right = WIDTH
         if self.rect.left < 0:
-            self.rect.left = 0     
+            self.rect.left = 0
+
+    def paused():
+
+        largeText = pygame.font.SysFont("comicsansms",115)
+        TextSurf, TextRect = text_objects("Paused", largeText)
+        TextRect.center = ((display_width/2),(display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)    
+
+        while pause:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                
+        #gameDisplay.fill(white)        
+
+        button("Continue",150,450,100,50,green,bright_green,unpause)
+        button("Quit",550,450,100,50,red,bright_red,quitgame)
+
+        pygame.display.update()
+        
+        
             
     
     def shoot(self):       
@@ -74,8 +96,7 @@ class Mob(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image = img1
-        self.rect = self.image.get_rect()
-        
+        self.rect = self.image.get_rect()        
 ##        pygame.sprite.Sprite.__init__(self)
 ##        self.image = pygame.Surface((30, 40))
 ##        self.image.fill(RED)
@@ -147,7 +168,7 @@ while running:
     # check to see if a mob hit the player
     hits = pygame.sprite.spritecollide(player, mobs, False)
     if hits:
-        running = True
+        running = False
         print("You Lose!")
 
     #Draw
